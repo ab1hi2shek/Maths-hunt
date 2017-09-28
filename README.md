@@ -1,6 +1,6 @@
 # MATH-FUN
 
-A cross-browsertreasure hunt type Gaming App. It is currently in development stage.
+A cross-browser treasure hunt type Gaming App. It is currently in development stage.
 Soon it will be fully developed and available.
 
 ## If you will not beat the time, it will beat you.
