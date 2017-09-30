@@ -13,7 +13,7 @@ class App extends Component {
 
   state = {
     brand: "FunMath",
-    name: "Guest",
+    name: null,
     level: -1,
     point: -1,
     toShow: TIME_OVER,
@@ -74,12 +74,17 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Row>
+
+        <Col xs={12} md={12} lg={12}>
         <Header
           brand = {this.state.brand}
           name = {this.state.name}
           level = {this.state.level}
           point = {this.state.point} 
         />
+        </Col>
+        </Row>
 
         {endOfGame() === 1 ?
           <EndPage 
@@ -98,6 +103,7 @@ class App extends Component {
                 <Col xs={8} md={8} mdOffset ={1} xsOffse={1}>
                   <MainPage />
                   <input
+                    autoFocus
                     type="text"
                     id = "inputbox"
                     placeholder = "Enter your name"
@@ -134,7 +140,7 @@ class App extends Component {
                     } 
                     </Col>
 
-                    <Col xs={2} md={2} mdOffset ={2} xsOffset={2}>
+                    <Col xs={3} md={2} mdOffset ={2} xsOffset={1}>
                       
                       {this.state.toShow === TIME_OVER ? 
                         
@@ -164,7 +170,7 @@ class App extends Component {
 
                   </Col>
 
-                  <Col xs={2} md={2}>
+                  <Col xs={3} md={2}>
                     {this.state.toShow === TIME_OVER || this.state.level === -1?
                       <Button
                         bsStyle="success" 

@@ -28,6 +28,7 @@ export default class Answer extends Component{
 
 			<div>
         		<input
+        			autoFocus
           			type="text"
           			id = "inputbox"
           			placeholder = "Enter Answer seperated by space"
