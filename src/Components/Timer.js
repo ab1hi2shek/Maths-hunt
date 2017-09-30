@@ -4,12 +4,15 @@ import React, { PropTypes, Component} from 'react';
 export default class Timer extends React.Component{
 
 	static propTypes = {
-		reset: PropTypes.func.isRequired,
-		timeRemaining: PropTypes.number
+		reset: PropTypes.func.isRequired
 	};
 
+	state = {
+		timeRemaining: 90
+	}
+
 	componentDidMount(){
-		this.props.reset();
+		this.tick();
 	};
 
 	componentWillUnmount()
@@ -17,12 +20,35 @@ export default class Timer extends React.Component{
 		clearInterval(this.interval);
 	};
 
-	render(){
-		return(
+	tick = () => {
+		this.timerID = setInterval(
+	      () => this.countDown(),
+	      1000
+	    );
+	}
 
-			<div>
-				Time Remaining: &nbsp;
-				{ this.props.timeRemaining } &nbsp;
+	countDown = () =>{
+	    this.setState({
+	      timeRemaining: this.state.timeRemaining - 1 
+	    })
+
+	    if(this.state.timeRemaining === -1){
+	      clearInterval(this.timerID);
+	      this.props.reset();
+	    }
+
+    };
+
+	render(){
+		var temp = "green";
+		if(this.state.timeRemaining < 30 && this.state.timeRemaining >= 15)
+			temp = "yellow";
+		else if(this.state.timeRemaining < 15)
+			temp = "red";
+
+		return(
+			<div className = {"time-count-" + temp}>
+				{ this.state.timeRemaining } &nbsp;
 				Seconds
 			</div>
 		);

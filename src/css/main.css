@@ -1,0 +1,51 @@
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+.main-page{
+	width: 100%;
+    padding: 12px 20px;
+    margin: 20px 0;
+    box-sizing: border-box;
+    border: none;
+    font-size: 16px;
+    background-color: #3CBC62;
+    color: black;
+}
+
+.main-page-score-display{
+	width: 100%;
+    padding: 12px 20px;
+    margin: 20px 0;
+    box-sizing: border-box;
+    border: none;
+    font-size: 16px;
+    background-color: #3CBC62;
+    color: white;
+}
+
+.show-answer{
+	color: black;
+}
+
+
+.time-count-green{
+	color: green;
+	z-index: 100;
+}
+
+.time-count-yellow{
+	color: #efd10b;
+	z-index: 100;
+}
+
+.time-count-red{
+	color: red;
+	z-index: 100;
+}
