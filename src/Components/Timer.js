@@ -8,7 +8,7 @@ export default class Timer extends React.Component{
 	};
 
 	state = {
-		timeRemaining: 90
+		timeRemaining: 30
 	}
 
 	componentDidMount(){

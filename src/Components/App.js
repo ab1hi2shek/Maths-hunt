@@ -43,7 +43,7 @@ class App extends Component {
     {
       this.setState({
         toShow: TIME_RUNNING,
-        timeRemaining: 1
+        timeRemaining: 30
       });
   }
   }
