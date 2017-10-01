@@ -6,7 +6,7 @@ import Question from './Question';
 import MainPage from './MainPage';
 import EndPage from './EndPage';
 import Answer from './Answer';
-import {TIME_OVER, TIME_RUNNING, evalAnswer, endOfGame} from '../consts/questions';
+import {TIME_OVER, TIME_RUNNING, evalAnswer, endOfGame, funCheckedArray} from '../consts/questions';
 import '../css/main.css';
 
 class App extends Component {
@@ -20,7 +20,8 @@ class App extends Component {
     timeRemaining: 0,
     thisLevelScore: 0,
     answer: "",
-    highestScore: 0
+    highestScore: 0,
+    finalAns: ""
   }
 
   reset = ()=> {
@@ -43,7 +44,7 @@ class App extends Component {
     {
       this.setState({
         toShow: TIME_RUNNING,
-        timeRemaining: 30
+        timeRemaining: 45
       });
   }
   }
@@ -61,7 +62,8 @@ class App extends Component {
       level: this.state.level + 1,
       point: this.state.point + newScore,
       thisLevelScore: newScore,
-      answer: ansArray === null ? "You didn't answer" : ansArray
+      answer: ansArray === null ? "You didn't answer" : ansArray,
+      finalAns: funCheckedArray()
     })
   }
 
@@ -130,7 +132,8 @@ class App extends Component {
                           <div className = "main-page-score-display">
                             Your score from previous level is <b>{this.state.thisLevelScore}</b><hr />
                             <div className = "show-answer">
-                              Score Evaluated on <b>{this.state.answer}</b>
+                              Your answer: &nbsp;<b>{this.state.answer}</b><br/>
+                              Filterd answer: &nbsp;<b>{this.state.finalAns}</b>
                             </div>
                           </div>
                           :
