@@ -1,3 +1,8 @@
+body{
+	background-image: url(fightx.png);
+	background-repeat: no-repeat;
+}
+
 input[type=text] {
     width: 100%;
     padding: 12px 20px;
@@ -38,14 +43,17 @@ input[type=text] {
 .time-count-green{
 	color: green;
 	z-index: 100;
+	font-size: 18px;
 }
 
 .time-count-yellow{
 	color: #efd10b;
 	z-index: 100;
+	font-size: 18px;
 }
 
 .time-count-red{
 	color: red;
+	font-size: 18px;
 	z-index: 100;
 }
