@@ -1,7 +1,7 @@
 var usa_states = ['Alabama','Alaska','AmericanSamoa','Arizona','Arkansas','California',
 	'Colorado','Connecticut','Delaware','DistrictofColumbia','FederatedStatesofMicronesia',
 	'Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky',
-	'Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota',
+	'Louisiana','Maine','MarshallIslands','Maryland','Massachusetts','Michigan','Minnesota',
 	'Mississippi','Missouri','Montana','Nebraska','Nevada','NewHampshire','NewJersey','NewMexico',
 	'NewYork','NorthCarolina','NorthDakota','NorthernMarianaIslands','Ohio','Oklahoma','Oregon',
 	'Palau','Pennsylvania','PuertoRico','RhodeIsland','SouthCarolina','SouthDakota','Tennessee',

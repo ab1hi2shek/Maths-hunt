@@ -21,11 +21,13 @@ class App extends Component {
     thisLevelScore: 0,
     answer: "",
     highestScore: 0,
-    finalAns: ""
+    finalAns: "",
+    skipButtonPressed: 0
   }
 
   reset = ()=> {
     this.setState({
+      skipButtonPressed: 0,
       toShow: TIME_OVER
     })
   }
@@ -46,25 +48,45 @@ class App extends Component {
         toShow: TIME_RUNNING,
         timeRemaining: 45
       });
-  }
-  }
-
-  answerList = (ansArray) =>{
-    let newScore = evalAnswer(ansArray, this.state.level, this.state.point);
-    if(newScore > this.state.highestScore || newScore < 0)
-    {
-      this.setState({
-        highestScore: newScore
-      })
     }
+  }
 
+  handleSkipLevelButton = () =>{
+    let newScore = Math.floor(-0.3 * Math.abs(this.state.level) + -0.2 * Math.abs(this.state.point));
+    let minm = -10;
+    newScore = Math.min(minm, newScore);
     this.setState({
+      skipButtonPressed: 1,
       level: this.state.level + 1,
       point: this.state.point + newScore,
       thisLevelScore: newScore,
-      answer: ansArray === null ? "You didn't answer" : ansArray,
-      finalAns: funCheckedArray()
+      answer: "You have skipped the quetion.",
+      finalAns: "SKIPPED",
+      toShow: TIME_OVER
     })
+  }
+
+  answerList = (ansArray) =>{
+
+    if(this.state.skipButtonPressed !== 1){
+
+        let newScore = evalAnswer(ansArray, this.state.level, this.state.point);
+        
+        if(newScore > this.state.highestScore || newScore < 0)
+        {
+          this.setState({
+            highestScore: newScore
+          })
+        }
+
+        this.setState({
+          level: this.state.level + 1,
+          point: this.state.point + newScore,
+          thisLevelScore: newScore,
+          answer: ansArray === null ? "You didn't answer" : ansArray,
+          finalAns: funCheckedArray()
+        })
+    }
   }
 
   handleNameChange = (e) => {
@@ -182,7 +204,11 @@ class App extends Component {
                           <div>Lets start</div> : <div>Next Level</div>}
                       </Button>
                       :
-                      null
+                      <Button
+                        bsStyle="warning" 
+                        bsSize="large" 
+                        onClick = {this.handleSkipLevelButton} >Skip level
+                      </Button>
                     }
                   </Col>
 
