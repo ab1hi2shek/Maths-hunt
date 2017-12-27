@@ -3,6 +3,8 @@
 A cross-browser treasure hunt type Gaming App. It is currently in development stage.
 Soon it will be fully developed and available.
 
+Basic app built on only React.js is running on Heroku [here](http://fun-math.herokuapp.com/).
+
 ## If you will not beat the time, it will beat you.
 
 This project is being created with the help of [Create React App](https://github.com/facebookincubator/create-react-app).
