@@ -1,7 +1,6 @@
 # MATH-FUN
 
-A cross-browser treasure hunt type Gaming App. It is currently in development stage.
-Soon it will be fully developed and available.
+A cross-browser treasure hunt type Gaming App.More features will be added.
 
 Basic app built on only React.js is running on Heroku [here](http://fun-math.herokuapp.com/).
 
@@ -9,13 +8,11 @@ Basic app built on only React.js is running on Heroku [here](http://fun-math.her
 
 This project is being created with the help of [Create React App](https://github.com/facebookincubator/create-react-app).
 
-## Technologies I have decided to use:
+## Technologies I have decided used:
 
 * React.JS
-* Redux
 * ES6
 * React-Bootstrap
-* Node.JS
 
 ## Currently Available Scripts
 
