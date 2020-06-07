@@ -8,13 +8,14 @@ import EndPage from './EndPage';
 import Answer from './Answer';
 import {TIME_OVER, TIME_RUNNING, evalAnswer, endOfGame, funCheckedArray} from '../consts/questions';
 import '../css/main.css';
+import Levels from './Levels';
 
 class App extends Component {
 
   state = {
     brand: "FunMath",
     name: null,
-    level: -1,
+    level: -2,
     point: -1,
     toShow: TIME_OVER,
     timeRemaining: 0,
@@ -22,7 +23,8 @@ class App extends Component {
     answer: "",
     highestScore: 0,
     finalAns: "",
-    skipButtonPressed: 0
+    skipButtonPressed: 0,
+    exit: 0
   }
 
   reset = ()=> {
@@ -42,6 +44,12 @@ class App extends Component {
           toShow: TIME_RUNNING
         });
     }
+    else if(this.state.level === -2){
+        this.setState({
+          level: this.state.level + 1,
+          point: 0,
+        });
+    }
     else
     {
       this.setState({
@@ -50,6 +58,13 @@ class App extends Component {
       });
     }
   }
+
+  handleExit = () => {
+    this.setState({
+      exit: 1
+    });
+  }
+
 
   handleSkipLevelButton = () =>{
     let newScore = Math.floor(-0.3 * Math.abs(this.state.level) + -0.2 * Math.abs(this.state.point));
@@ -110,7 +125,7 @@ class App extends Component {
         </Col>
         </Row>
 
-        {endOfGame() === 1 ?
+        {endOfGame() === 1 || this.state.exit === 1 ?
           <EndPage 
               name = {this.state.name}
               point = {this.state.point}
@@ -120,7 +135,23 @@ class App extends Component {
         
         :
           <div>
-            {this.state.level === -1 ?
+          <div>
+                    {this.state.level > -2 ?
+                      <div>
+                    <div className="welcome-tag">Welcome {this.state.name} </div>
+                    </div>
+                    :
+                    null
+                    }
+                    {this.state.level > -1 ?
+                      <div>
+                    <div className="welcome-tag">You are currently at level: {this.state.level+1} </div>
+                    <div className="welcome-tag">Your points: {this.state.point} </div>
+                    </div>
+                    :
+                    null}
+                    </div>
+            {this.state.level === -2 ?
 
               <Row>
 
@@ -140,13 +171,43 @@ class App extends Component {
               null
             }
 
+            {this.state.level === -1 ?
+
+              <Row>
+
+                <Col xs={8} md={8} mdOffset ={1} xsOffse={1}>
+                  <Levels />
+                  <Grid>
+                <Row>
+                  <Col xs={3} md={2}>
+                    <Button className="level" variant="primary" onClick = {this.handleNextLevelButton} > Easy </Button>
+                    }
+                  </Col>
+                </Row>
+              </Grid>
+              
+              <Grid>
+                <Row>
+                  <Col xs={3} md={2}>
+                    <Button className="level" variant="primary" onClick = {this.handleNextLevelButton} > Hard </Button>
+                    }
+                  </Col>
+                </Row>
+              </Grid>
+
+                </Col>
+              </Row>
+              :
+              null
+            }
+
               <Grid>
 
                 <Row>
 
                   <Col xs={8} md={8}>
-
-                    {this.state.toShow === TIME_RUNNING ?  
+                    
+                    {this.state.toShow === TIME_RUNNING && this.state.level>-1 ?  
                       <Question />
                       :
                       <div>
@@ -155,7 +216,7 @@ class App extends Component {
                             Your score from previous level is <b>{this.state.thisLevelScore}</b><hr />
                             <div className = "show-answer">
                               Your answer: &nbsp;<b>{this.state.answer}</b><br/>
-                              Filterd answer: &nbsp;<b>{this.state.finalAns}</b>
+                              Filtered answer: &nbsp;<b>{this.state.finalAns}</b>
                             </div>
                           </div>
                           :
@@ -200,8 +261,8 @@ class App extends Component {
                       <Button
                         bsStyle="success" 
                         bsSize="large" 
-                        onClick = {this.handleNextLevelButton} > {this.state.level === -1 ?
-                          <div>Lets start</div> : <div>Next Level</div>}
+                        onClick = {this.handleNextLevelButton} > {this.state.level === -2 ?
+                          <div>Lets start</div> : <div>{this.state.level === -1 ? <div>Any Level</div> : <div>Next Level</div>}</div>}
                       </Button>
                       :
                       <Button
@@ -215,6 +276,9 @@ class App extends Component {
                 </Row>
 
               </Grid>
+                    <Button className="level" variant="primary" onClick = {this.handleExit} > Exit </Button>
+                    }
+
               </div>
           }
       </div>
